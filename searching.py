@@ -48,14 +48,17 @@ def  pattern_search(data, vzor):
     return slovnik
 
 def binary_search(data, hledane_cislo):
-    indexy = []
-    for i in range (len(data)):
-        if data[i] == hledane_cislo:
-            indexy.append(i)
-    if indexy == []:
-        return None
-    return indexy
-
+    left = 0
+    right = len (data)-1
+    while left <= right:
+        mid = (left + right)//2
+        if data [mid] == hledane_cislo:
+            return mid
+        elif data[mid] < hledane_cislo:
+            left = mid +1
+        else:
+            right = mid -1
+    return None
 
 def main():
     data = read_data("sequential.json", "unordered_numbers")
@@ -67,7 +70,7 @@ def main():
     print (p_search)
 
     data = read_data("sequential.json", "ordered_numbers")
-    b_search = binary_search(data, 1)
+    b_search = binary_search(data, 14)
     print (b_search)
 
 
