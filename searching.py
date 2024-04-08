@@ -25,10 +25,21 @@ def read_data(file_name, field):
         data = json.load(f)
     return data.get(field, None)
 
+def linear_search(data,hledane_cislo):
+    positions = []
+    count = 0
+    for i in range(len(data)):
+        if data[i] == hledane_cislo:
+            count+=1
+            positions.append(i)
+    slovnik = {"positions": positions, "count": count}
+    return slovnik
 
 def main():
     data = read_data("sequential.json", "unordered_numbers")
     print(data)
+    search  = linear_search(data, 0)
+    print (search)
 
 
 if __name__ == '__main__':
