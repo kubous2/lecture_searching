@@ -47,13 +47,28 @@ def  pattern_search(data, vzor):
     slovnik = {"positions": positions, "count": count}
     return slovnik
 
+def binary_search(data, hledane_cislo):
+    indexy = []
+    for i in range (len(data)):
+        if data[i] == hledane_cislo:
+            indexy.append(i)
+    if indexy == []:
+        return None
+    return indexy
+
+
 def main():
-    data = read_data("sequential.json", "dna_sequence")
-    print(data)
+    data = read_data("sequential.json", "unordered_numbers")
     l_search  = linear_search(data, 0)
     print (l_search)
+
+    data = read_data("sequential.json", "dna_sequence")
     p_search = pattern_search(data,"ATA")
     print (p_search)
+
+    data = read_data("sequential.json", "ordered_numbers")
+    b_search = binary_search(data, 1)
+    print (b_search)
 
 
 if __name__ == '__main__':
