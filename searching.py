@@ -35,11 +35,25 @@ def linear_search(data,hledane_cislo):
     slovnik = {"positions": positions, "count": count}
     return slovnik
 
+def  pattern_search(data, vzor):
+    velikost_vzoru = len(vzor) #3
+    delka_data = len (data)
+    positions = []
+    count = 0
+    for i in range(delka_data-velikost_vzoru+1):
+        if data[i:i + velikost_vzoru] == vzor:
+            count += 1
+            positions.append(i)
+    slovnik = {"positions": positions, "count": count}
+    return slovnik
+
 def main():
-    data = read_data("sequential.json", "unordered_numbers")
+    data = read_data("sequential.json", "dna_sequence")
     print(data)
-    search  = linear_search(data, 0)
-    print (search)
+    l_search  = linear_search(data, 0)
+    print (l_search)
+    p_search = pattern_search(data,"ATA")
+    print (p_search)
 
 
 if __name__ == '__main__':
